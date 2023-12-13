@@ -2,6 +2,7 @@ package fr.tp.entities;
 
 import jakarta.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table(name = "Command")
@@ -28,6 +29,9 @@ public class CommandEntity extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "IdDeliveryAddress")
     private DeliveryAddressEntity deliveryAddress;
+
+    @OneToMany(mappedBy = "command")
+    private Set<CommandLineEntity> commandLines;
 
     public Long getId() {
         return id;
