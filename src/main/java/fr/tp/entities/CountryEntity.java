@@ -9,6 +9,7 @@ public class CountryEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Id")
     private Long id;
 
     @Column(name = "Name")

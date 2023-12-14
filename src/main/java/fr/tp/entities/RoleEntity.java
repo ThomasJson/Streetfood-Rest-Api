@@ -9,6 +9,7 @@ public class RoleEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Id")
     private Long id;
 
     @Column(name = "Title")
@@ -17,7 +18,7 @@ public class RoleEntity extends BaseEntity {
     @Column(name = "Weight")
     private Integer weight;
 
-    @OneToMany(mappedBy = "roles")
+    @OneToMany(mappedBy = "role")
     private Set<AccountEntity> accounts;
 
     public Long getId() {

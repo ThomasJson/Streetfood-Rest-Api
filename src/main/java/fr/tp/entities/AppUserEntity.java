@@ -10,6 +10,7 @@ public class AppUserEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Id")
     private Long id;
 
     @Column(name = "FirstName")
