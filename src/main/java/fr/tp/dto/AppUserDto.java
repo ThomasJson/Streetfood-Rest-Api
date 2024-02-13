@@ -2,10 +2,11 @@ package fr.tp.dto;
 
 import fr.tp.entities.AppUserEntity;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class AppUserDto {
-    private Long id;
+    private UUID id;
     private String firstName;
     private String lastName;
 
@@ -13,17 +14,17 @@ public class AppUserDto {
 
     }
 
-    public AppUserDto(Long id, String firstName, String lastName){
+    public AppUserDto(UUID id, String firstName, String lastName){
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

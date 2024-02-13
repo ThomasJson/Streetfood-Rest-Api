@@ -2,15 +2,16 @@ package fr.tp.entities;
 
 import jakarta.persistence.*;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name = "City")
 public class CityEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id")
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "Id", updatable = false, nullable = false)
+    private UUID id;
 
     @Column(name = "Name")
     private String name;
@@ -28,11 +29,11 @@ public class CityEntity {
     @OneToMany(mappedBy = "city")
     private Set<DeliveryAddressEntity> deliveryAddresses;
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

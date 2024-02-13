@@ -1,17 +1,19 @@
 package fr.tp.entities;
 
 import jakarta.persistence.*;
+
 import java.time.LocalDate;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name = "AppUser")
 public class AppUserEntity extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id")
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "Id", updatable = false, nullable = false)
+    private UUID id;
 
     @Column(name = "FirstName")
     private String firstName;
@@ -28,11 +30,11 @@ public class AppUserEntity extends BaseEntity {
     @OneToMany(mappedBy = "appUser")
     private Set<AccountEntity> accounts;
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

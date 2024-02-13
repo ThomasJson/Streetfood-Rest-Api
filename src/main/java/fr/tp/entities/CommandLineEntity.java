@@ -3,15 +3,16 @@ package fr.tp.entities;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name = "CommandLine")
 public class CommandLineEntity extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id")
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "Id", updatable = false, nullable = false)
+    private UUID id;
 
     @Column(name = "Quantity")
     private Integer quantity;
@@ -31,11 +32,11 @@ public class CommandLineEntity extends BaseEntity {
     )
     private Set<ProductEntity> products;
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

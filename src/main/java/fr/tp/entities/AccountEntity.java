@@ -1,19 +1,22 @@
 package fr.tp.entities;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
+
 import java.time.LocalDate;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name = "Account")
 public class AccountEntity extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id")
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "Id", updatable = false, nullable = false)
+    private UUID id;
 
-    @Column(name = "Mail")
+    @Column(name = "Mail", nullable = false, unique = true)
     private String mail;
 
     @Column(name = "Pseudo")
@@ -59,11 +62,11 @@ public class AccountEntity extends BaseEntity {
     )
     private Set<PaymentMeanEntity> paymentMeans;
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

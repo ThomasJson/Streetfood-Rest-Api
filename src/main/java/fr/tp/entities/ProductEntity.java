@@ -2,16 +2,18 @@ package fr.tp.entities;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name = "Product")
 public class ProductEntity extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id")
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "Id", updatable = false, nullable = false)
+    private UUID id;
 
     @Column(name = "Title")
     private String title;
@@ -40,16 +42,16 @@ public class ProductEntity extends BaseEntity {
             joinColumns = @JoinColumn(name = "IdProduct"),
             inverseJoinColumns = @JoinColumn(name = "IdCategory")
     )
-    private Set<CategoryEntity> categories;
+    private Set<CategoryEntity> categories = new HashSet<>();
 
     @OneToMany(mappedBy = "product")
-    private Set<ImageEntity> images;
+    private Set<ImageEntity> images = new HashSet<>();
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

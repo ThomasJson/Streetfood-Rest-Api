@@ -2,14 +2,16 @@ package fr.tp.entities;
 
 import jakarta.persistence.*;
 
+import java.util.UUID;
+
 @Entity
 @Table(name = "Image")
 public class ImageEntity extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id")
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "Id", updatable = false, nullable = false)
+    private UUID id;
 
     @Column(name = "Src")
     private String src;
@@ -21,11 +23,11 @@ public class ImageEntity extends BaseEntity {
     @JoinColumn(name = "IdProduct")
     private ProductEntity product;
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

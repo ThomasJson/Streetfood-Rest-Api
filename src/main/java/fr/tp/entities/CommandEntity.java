@@ -3,15 +3,16 @@ package fr.tp.entities;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name = "Command")
 public class CommandEntity extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id")
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "Id", updatable = false, nullable = false)
+    private UUID id;
 
     @Column(name = "CommandDate")
     private LocalDate commandDate;
@@ -34,11 +35,11 @@ public class CommandEntity extends BaseEntity {
     @OneToMany(mappedBy = "command")
     private Set<CommandLineEntity> commandLines;
 
-    public Long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
