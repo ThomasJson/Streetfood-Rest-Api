@@ -1,7 +1,9 @@
 package fr.tp.repositories;
 
 import fr.tp.entities.CategoryEntity;
+import fr.tp.entities.ProductEntity;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
+import io.quarkus.panache.common.Parameters;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
 
@@ -14,6 +16,7 @@ public class CategoryRepository implements PanacheRepository<CategoryEntity> {
     public List<CategoryEntity> getAll() {
         return listAll();
     }
+
     public CategoryEntity getById(UUID id) {
         return find("id", id).firstResult();
     }

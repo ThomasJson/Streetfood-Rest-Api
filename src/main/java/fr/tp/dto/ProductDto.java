@@ -13,25 +13,25 @@ public class ProductDto {
     private UUID id;
     private String title;
     private String content;
-    private List<ImageDto> images;
+    private String title_Th;
+    private String content_Th;
+    private ImageDto image;
     private BigDecimal price;
     private Integer stock;
     private Boolean isBestSale;
     private Boolean isBestOffer;
 
-    // TODO : A checker pour les images
-    public ProductDto(ProductEntity product, List<ImageEntity> imageEntities) {
+    public ProductDto(ProductEntity product) {
         this.id = product.getId();
         this.title = product.getTitle();
         this.content = product.getContent();
-        this.images = imageEntities != null ? imageEntities.stream()
-                .map(ImageDto::new) // Convertir les entités d'image en DTOs d'image
-                .collect(Collectors.toList()) : new ArrayList<>();
-    }
-
-    // Surcharge du constructeur qui accepte seulement un ProductEntity
-    public ProductDto(ProductEntity product) {
-        this(product, product.getImages() != null ? new ArrayList<>(product.getImages()) : null);
+        this.title_Th = product.getTitle_Th();
+        this.content_Th = product.getContent_Th();
+        this.price = product.getPrice();
+        this.stock = product.getStock();
+        this.isBestSale = product.getBestSale();
+        this.isBestOffer = product.getBestOffer();
+        this.image = product.getImage() != null ? new ImageDto(product.getImage()) : null;
     }
 
     public UUID getId() {
@@ -58,14 +58,29 @@ public class ProductDto {
         this.content = content;
     }
 
-    public List<ImageDto> getImages() {
-        return images;
+    public String getTitle_Th() {
+        return title_Th;
     }
 
-    public void setImages(List<ImageDto> images) {
-        this.images = images;
+    public void setTitle_Th(String title_Th) {
+        this.title_Th = title_Th;
     }
 
+    public String getContent_Th() {
+        return content_Th;
+    }
+
+    public void setContent_Th(String content_Th) {
+        this.content_Th = content_Th;
+    }
+
+    public ImageDto getImage() {
+        return image;
+    }
+
+    public void setImage(ImageDto image) {
+        this.image = image;
+    }
     public BigDecimal getPrice() {
         return price;
     }

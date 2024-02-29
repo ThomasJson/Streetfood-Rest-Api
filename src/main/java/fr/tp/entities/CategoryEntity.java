@@ -16,8 +16,15 @@ public class CategoryEntity extends BaseEntity {
     @Column(name = "Title")
     private String title;
 
+    @Column(name = "Title_Th", columnDefinition = "NVARCHAR")
+    private String title_Th;
+
     @ManyToMany(mappedBy = "categories")
     private Set<ProductEntity> products;
+
+    @ManyToOne
+    @JoinColumn(name = "IdImage")
+    private ImageEntity image;
 
     public UUID getId() {
         return id;
@@ -35,11 +42,27 @@ public class CategoryEntity extends BaseEntity {
         this.title = title;
     }
 
+    public String getTitle_Th() {
+        return title_Th;
+    }
+
+    public void setTitle_Th(String title_Th) {
+        this.title_Th = title_Th;
+    }
+
     public Set<ProductEntity> getProducts() {
         return products;
     }
 
     public void setProducts(Set<ProductEntity> products) {
         this.products = products;
+    }
+
+    public ImageEntity getImage() {
+        return image;
+    }
+
+    public void setImage(ImageEntity image) {
+        this.image = image;
     }
 }

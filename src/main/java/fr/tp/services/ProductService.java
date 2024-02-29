@@ -26,4 +26,12 @@ public class ProductService {
         }
         return null;
     }
+
+    public List<ProductDto> getProductsByCategoryId(UUID categoryId) {
+        List<ProductEntity> products = productRepository.getProductsByCategoryId(categoryId);
+        if(products != null){
+            return ProductDto.fromEntities(products);
+        }
+        return null;
+    }
 }

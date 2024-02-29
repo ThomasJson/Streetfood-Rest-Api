@@ -26,8 +26,6 @@ public class AdminService {
     public ProductEntity insertProduct(InsertProductModel productModel) {
 
         ProductEntity product = new ProductEntity();
-        product.setTitle(productModel.getTitle());
-        product.setContent(productModel.getContent());
 
         Set<CategoryEntity> categories = new HashSet<>();
         CategoryEntity category = em.find(CategoryEntity.class, productModel.getCategoryId());
@@ -37,11 +35,14 @@ public class AdminService {
         categories.add(category);
 
         ImageEntity image = imageRepository.createImage(productModel.getSrc(), productModel.getAlt());
-        image.setProduct(product);
+        image.setAlt(productModel.getAlt());
 
+        product.setTitle(productModel.getTitle());
+        product.setContent(productModel.getContent());
         product.setCategories(categories);
-        product.getImages().add(image);
+        product.setImage(image);
 
+        image.getProducts().add(product);
         em.persist(product);
 
         return product;

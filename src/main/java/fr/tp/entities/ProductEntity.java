@@ -21,6 +21,12 @@ public class ProductEntity extends BaseEntity {
     @Column(name = "Content")
     private String content;
 
+    @Column(name = "Title_Th", columnDefinition = "NVARCHAR")
+    private String title_Th;
+
+    @Column(name = "Content_Th", columnDefinition = "NVARCHAR")
+    private String content_Th;
+
     @Column(name = "Price")
     private BigDecimal price;
 
@@ -44,8 +50,9 @@ public class ProductEntity extends BaseEntity {
     )
     private Set<CategoryEntity> categories = new HashSet<>();
 
-    @OneToMany(mappedBy = "product")
-    private Set<ImageEntity> images = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "IdImage")
+    private ImageEntity image;
 
     public UUID getId() {
         return id;
@@ -69,6 +76,22 @@ public class ProductEntity extends BaseEntity {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getTitle_Th() {
+        return title_Th;
+    }
+
+    public void setTitle_Th(String title_Th) {
+        this.title_Th = title_Th;
+    }
+
+    public String getContent_Th() {
+        return content_Th;
+    }
+
+    public void setContent_Th(String content_Th) {
+        this.content_Th = content_Th;
     }
 
     public BigDecimal getPrice() {
@@ -119,11 +142,12 @@ public class ProductEntity extends BaseEntity {
         this.categories = categories;
     }
 
-    public Set<ImageEntity> getImages() {
-        return images;
+    public ImageEntity getImage() {
+        return image;
     }
 
-    public void setImages(Set<ImageEntity> images) {
-        this.images = images;
+    public void setImage(ImageEntity image) {
+        this.image = image;
     }
+
 }

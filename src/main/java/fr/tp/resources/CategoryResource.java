@@ -13,6 +13,7 @@ import fr.tp.repositories.AccountRepository;
 import fr.tp.repositories.CategoryRepository;
 import fr.tp.services.AppUserService;
 import fr.tp.services.CategoryService;
+import fr.tp.services.ProductService;
 import fr.tp.utils.RestUtils;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
@@ -28,6 +29,9 @@ public class CategoryResource {
 
     @Inject
     CategoryService categoryService;
+
+    @Inject
+    ProductService productService;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -47,13 +51,11 @@ public class CategoryResource {
         }
     }
 
-
-
     @GET
     @Path("/{id}/products")
-    public Response getProductsByCategory(@PathParam("id") UUID categoryId, @QueryParam("withImages") @DefaultValue("false") boolean withImages) {
+    public Response getProductsByCategory(@PathParam("id") UUID categoryId) {
         try {
-            List<ProductDto> products = categoryService.getProductsByCategory(categoryId, withImages);
+            List<ProductDto> products = productService.getProductsByCategoryId(categoryId);
             return Response.ok(products).build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("An error occurred: " + e.getMessage()).build();

@@ -2,6 +2,8 @@ package fr.tp.entities;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -19,9 +21,11 @@ public class ImageEntity extends BaseEntity {
     @Column(name = "Alt")
     private String alt;
 
-    @ManyToOne
-    @JoinColumn(name = "IdProduct")
-    private ProductEntity product;
+    @OneToMany(mappedBy = "image")
+    private Set<ProductEntity> products = new HashSet<>();
+
+    @OneToMany(mappedBy = "image")
+    private Set<CategoryEntity> categories = new HashSet<>();
 
     public UUID getId() {
         return id;
@@ -47,11 +51,19 @@ public class ImageEntity extends BaseEntity {
         this.alt = alt;
     }
 
-    public ProductEntity getProduct() {
-        return product;
+    public Set<ProductEntity> getProducts() {
+        return products;
     }
 
-    public void setProduct(ProductEntity product) {
-        this.product = product;
+    public void setProducts(Set<ProductEntity> products) {
+        this.products = products;
+    }
+
+    public Set<CategoryEntity> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<CategoryEntity> categories) {
+        this.categories = categories;
     }
 }
