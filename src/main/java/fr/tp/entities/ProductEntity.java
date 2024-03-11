@@ -33,6 +33,9 @@ public class ProductEntity extends BaseEntity {
     @Column(name = "Stock")
     private Integer stock;
 
+    @Column(name = "IsNew")
+    private Boolean isNew;
+
     @Column(name = "IsBestSale")
     private Boolean isBestSale;
 
@@ -108,6 +111,14 @@ public class ProductEntity extends BaseEntity {
 
     public void setStock(Integer stock) {
         this.stock = stock;
+    }
+
+    public Boolean getNew() {
+        return isNew;
+    }
+
+    public void setNew(Boolean aNew) {
+        isNew = aNew;
     }
 
     public Boolean getBestSale() {

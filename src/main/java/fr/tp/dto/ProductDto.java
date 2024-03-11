@@ -18,6 +18,7 @@ public class ProductDto {
     private ImageDto image;
     private BigDecimal price;
     private Integer stock;
+    private Boolean isNew;
     private Boolean isBestSale;
     private Boolean isBestOffer;
 
@@ -29,6 +30,7 @@ public class ProductDto {
         this.content_Th = product.getContent_Th();
         this.price = product.getPrice();
         this.stock = product.getStock();
+        this.isNew = product.getNew();
         this.isBestSale = product.getBestSale();
         this.isBestOffer = product.getBestOffer();
         this.image = product.getImage() != null ? new ImageDto(product.getImage()) : null;
@@ -95,6 +97,14 @@ public class ProductDto {
 
     public void setStock(Integer stock) {
         this.stock = stock;
+    }
+
+    public Boolean getNew() {
+        return isNew;
+    }
+
+    public void setNew(Boolean aNew) {
+        isNew = aNew;
     }
 
     public Boolean getBestSale() {
