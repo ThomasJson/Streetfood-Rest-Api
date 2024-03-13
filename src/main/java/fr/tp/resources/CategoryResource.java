@@ -15,6 +15,7 @@ import fr.tp.services.AppUserService;
 import fr.tp.services.CategoryService;
 import fr.tp.services.ProductService;
 import fr.tp.utils.RestUtils;
+import jakarta.annotation.security.PermitAll;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.ws.rs.*;
@@ -34,12 +35,14 @@ public class CategoryResource {
     ProductService productService;
 
     @GET
+    @PermitAll
     @Produces(MediaType.APPLICATION_JSON)
     public List<CategoryDto> getAllCategories() {
         return categoryService.getAllCategories();
     }
 
     @GET
+    @PermitAll
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCategoryById(@PathParam("id") UUID id) {
@@ -52,6 +55,7 @@ public class CategoryResource {
     }
 
     @GET
+    @PermitAll
     @Path("/{id}/products")
     public Response getProductsByCategory(@PathParam("id") UUID categoryId) {
         try {

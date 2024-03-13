@@ -1,3 +1,5 @@
+/*
+
 package fr.tp.services;
 
 import fr.tp.entities.AccountEntity;
@@ -8,7 +10,6 @@ import fr.tp.repositories.AccountRepository;
 import fr.tp.repositories.AppUserRepository;
 import fr.tp.repositories.CategoryRepository;
 import fr.tp.repositories.RoleRepository;
-import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -33,7 +34,6 @@ public class InitDbService {
 
         if (roleRepository.listAll().isEmpty()) {
 
-            /* Initialize Categories */
             CategoryEntity cate1 = categoryRepository.createCategory("Chicken");
             CategoryEntity cate2 = categoryRepository.createCategory("Desserts");
             CategoryEntity cate3 = categoryRepository.createCategory("IceCreams");
@@ -44,15 +44,12 @@ public class InitDbService {
             CategoryEntity cate8 = categoryRepository.createCategory("Snacks");
             CategoryEntity cate9 = categoryRepository.createCategory("Veggie");
 
-            /* Initialize Roles */
             RoleEntity admin = roleRepository.createRole("Admin", 4);
             RoleEntity user = roleRepository.createRole("User", 1);
 
-            /* Initialize Users */
             AppUserEntity thomas = appUserRepository.createNewAppUser("Thomas");
             AppUserEntity quentin = appUserRepository.createNewAppUser("Quentin");
 
-            /* Initialize Accounts */
             AccountEntity adminAcc = accountRepository.createNewAccount(
                     "admin@gmail.com",
                     "Azerty1",
@@ -72,3 +69,5 @@ public class InitDbService {
         }
     }
 }
+
+*/

@@ -2,6 +2,7 @@ package fr.tp.resources;
 
 import fr.tp.dto.ProductDto;
 import fr.tp.services.ProductService;
+import jakarta.annotation.security.PermitAll;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;
@@ -17,12 +18,14 @@ public class ProductResource {
     ProductService productService;
 
     @GET
+    @PermitAll
     @Produces(MediaType.APPLICATION_JSON)
     public List<ProductDto> getAllProducts() {
         return productService.getAllProducts();
     }
 
     @GET
+    @PermitAll
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getProductById(@PathParam("id") UUID id) {

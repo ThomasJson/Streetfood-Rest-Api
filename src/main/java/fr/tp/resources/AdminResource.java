@@ -3,6 +3,7 @@ package fr.tp.resources;
 import fr.tp.entities.ProductEntity;
 import fr.tp.models.InsertProductModel;
 import fr.tp.services.AdminService;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;
@@ -15,6 +16,7 @@ public class AdminResource {
     AdminService adminService;
 
     @POST
+    @RolesAllowed("Admin")
     @Path("/product/insert")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)

@@ -1,3 +1,5 @@
+/*
+
 package fr.tp.resources;
 
 import jakarta.inject.Inject;
@@ -28,4 +30,7 @@ public class InitDbResource {
             return Response.serverError().entity("Erreur lors de l'initialisation de la base de données : " + e.getMessage()).build();
         }
     }
+
 }
+
+*/

@@ -2,6 +2,8 @@ package fr.tp.resources;
 
 import fr.tp.dto.AccountDto;
 import fr.tp.services.AccountService;
+import jakarta.annotation.security.PermitAll;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
@@ -19,12 +21,14 @@ public class AccountResource {
     AccountService accountService;
 
     @GET
+    @RolesAllowed("Admin")
     @Produces(MediaType.APPLICATION_JSON)
     public List<AccountDto> getAllAccounts() {
         return accountService.getAllAccounts();
     }
 
     @GET
+    @RolesAllowed({"Admin","User"})
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAccountById(@PathParam("id") UUID id) {

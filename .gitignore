@@ -14,6 +14,7 @@ bin/
 
 # IntelliJ
 src/main/resources/application.properties
+src/main/resources/publicKey.pem
 .idea
 *.ipr
 *.iml
