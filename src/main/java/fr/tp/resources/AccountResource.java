@@ -5,10 +5,7 @@ import fr.tp.services.AccountService;
 import jakarta.annotation.security.PermitAll;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.MediaType;
 import java.util.List;
@@ -28,8 +25,8 @@ public class AccountResource {
     }
 
     @GET
-    @RolesAllowed({"Admin","User"})
     @Path("/{id}")
+    @RolesAllowed({"Admin","User"})
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAccountById(@PathParam("id") UUID id) {
         AccountDto accountDto = accountService.getAccountById(id);

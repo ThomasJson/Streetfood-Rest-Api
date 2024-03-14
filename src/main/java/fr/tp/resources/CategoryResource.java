@@ -57,6 +57,7 @@ public class CategoryResource {
     @GET
     @PermitAll
     @Path("/{id}/products")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response getProductsByCategory(@PathParam("id") UUID categoryId) {
         try {
             List<ProductDto> products = productService.getProductsByCategoryId(categoryId);

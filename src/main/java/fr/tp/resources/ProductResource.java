@@ -25,8 +25,8 @@ public class ProductResource {
     }
 
     @GET
-    @PermitAll
     @Path("/{id}")
+    @PermitAll
     @Produces(MediaType.APPLICATION_JSON)
     public Response getProductById(@PathParam("id") UUID id) {
         ProductDto productDto = productService.getProductById(id);

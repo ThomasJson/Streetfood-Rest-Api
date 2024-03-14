@@ -16,8 +16,8 @@ public class AdminResource {
     AdminService adminService;
 
     @POST
-    @RolesAllowed("Admin")
     @Path("/product/insert")
+    @RolesAllowed("Admin")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response insertProduct(InsertProductModel productToInsert) {

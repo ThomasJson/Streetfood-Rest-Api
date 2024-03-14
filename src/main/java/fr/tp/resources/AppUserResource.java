@@ -27,8 +27,8 @@ public class AppUserResource {
     }
 
     @GET
-    @RolesAllowed({"Admin","User"})
     @Path("/{id}")
+    @RolesAllowed({"Admin","User"})
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAppUserById(@PathParam("id") UUID id) {
         AppUserDto userDto = appUserService.getAppUserById(id);
