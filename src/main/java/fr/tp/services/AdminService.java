@@ -38,7 +38,14 @@ public class AdminService {
         image.setAlt(productModel.getAlt());
 
         product.setTitle(productModel.getTitle());
+        product.setTitle_Th(productModel.getTitleTh());
         product.setContent(productModel.getContent());
+        product.setContent_Th(productModel.getContentTh());
+        product.setPrice(productModel.getPrice());
+        product.setStock(productModel.getStock());
+        product.setNew(productModel.isNew());
+        product.setBestOffer(productModel.isBestOffer());
+        product.setBestSale(productModel.isBestSeller());
         product.setCategories(categories);
         product.setImage(image);
 
